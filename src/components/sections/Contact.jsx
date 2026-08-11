@@ -21,6 +21,7 @@ const contactMethods = [
     label: "Email",
     value: profile.email,
     href: `mailto:${profile.email}`,
+    breakAll: true,
   },
   {
     icon: FaPhone,
@@ -61,40 +62,50 @@ export default function Contact() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="max-w-2xl mx-auto text-center"
+        className="max-w-2xl mx-auto text-center min-w-0"
       >
-        <p className="text-text-secondary leading-relaxed mb-10">
+        <p className="text-sm sm:text-base text-text-secondary leading-relaxed mb-8 sm:mb-10 px-1">
           Whether you need a high-converting website, a scalable backend system, or a
           technical lead for your team — let's talk. I typically respond within 24 hours.
         </p>
 
-        <div className="grid sm:grid-cols-2 gap-4 mb-10">
-          {contactMethods.map(({ icon: Icon, label, value, href, accent }) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8 sm:mb-10">
+          {contactMethods.map(({ icon: Icon, label, value, href, accent, breakAll }) => (
             <a
               key={label}
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
               rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="flex items-center gap-4 p-4 rounded-xl border border-border bg-surface-800/50 hover:border-accent/40 hover:bg-surface-800 transition-all text-left group"
+              className="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl border border-border bg-surface-800/50 hover:border-accent/40 hover:bg-surface-800 transition-all text-left group min-w-0"
             >
-              <div className={`p-3 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors ${accent || "text-accent"}`}>
-                <Icon />
+              <div
+                className={`p-2.5 sm:p-3 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors shrink-0 ${accent || "text-accent"}`}
+              >
+                <Icon className="text-base sm:text-lg" />
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <p className="font-mono text-xs text-text-muted">{label}</p>
-                <p className="text-sm text-text-primary">{value}</p>
+                <p
+                  className={`text-sm text-text-primary ${breakAll ? "break-all" : "break-words truncate sm:whitespace-normal"}`}
+                >
+                  {value}
+                </p>
               </div>
             </a>
           ))}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4">
-          <Button href={`${profile.links.whatsapp}?text=${whatsappMessage}`}>
+        <div className="flex flex-col xs:flex-row flex-wrap justify-center gap-3 sm:gap-4 px-1">
+          <Button
+            href={`${profile.links.whatsapp}?text=${whatsappMessage}`}
+            className="w-full xs:w-auto justify-center"
+          >
             WhatsApp Me
           </Button>
           <Button
             variant="secondary"
             href={`mailto:${profile.email}?subject=Project Inquiry`}
+            className="w-full xs:w-auto justify-center"
           >
             Send Email
           </Button>

@@ -13,7 +13,7 @@ import WhatsAppHelp from "./components/ui/WhatsAppHelp";
 
 function App() {
   return (
-    <div className="bg-surface-900 text-text-primary min-h-screen relative transition-colors duration-300">
+    <div className="bg-surface-900 text-text-primary min-h-screen relative transition-colors duration-300 overflow-x-hidden">
       <GitNodesBackground />
       <div className="fixed inset-0 bg-grid opacity-30 pointer-events-none z-[2]" />
       <Navbar />

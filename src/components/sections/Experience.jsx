@@ -16,7 +16,7 @@ export default function Experience() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="max-w-3xl"
+        className="max-w-3xl min-w-0"
       >
         {experience.map((item) => (
           <TimelineItem key={`${item.company}-${item.role}`} {...item} />

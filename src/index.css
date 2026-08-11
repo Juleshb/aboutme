@@ -49,10 +49,12 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply font-sans antialiased bg-surface-900 text-text-primary transition-colors duration-300;
+    overflow-x: hidden;
   }
 
   ::selection {
@@ -80,7 +82,7 @@
 
 @layer components {
   .section {
-    @apply container mx-auto px-6 py-24 relative;
+    @apply container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 relative;
   }
 
   .bg-grid {
@@ -133,14 +135,21 @@
 
   .nav-link {
     display: block;
-    padding: 0.5rem 0.875rem;
+    padding: 0.5rem 0.625rem;
     border-radius: 9999px;
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     color: var(--color-text-secondary);
     cursor: pointer;
     transition: all 0.25s ease;
     white-space: nowrap;
+  }
+
+  @media (min-width: 1280px) {
+    .nav-link {
+      padding: 0.5rem 0.875rem;
+      font-size: 0.8125rem;
+    }
   }
 
   .nav-link:hover {
@@ -198,9 +207,13 @@
   }
 
   @media (max-width: 640px) {
+    .glass-nav {
+      border-radius: 1.25rem;
+    }
+
     .whatsapp-help {
-      bottom: 1.25rem;
-      right: 1.25rem;
+      bottom: max(1rem, env(safe-area-inset-bottom));
+      right: max(1rem, env(safe-area-inset-right));
     }
 
     .whatsapp-help-tooltip {
