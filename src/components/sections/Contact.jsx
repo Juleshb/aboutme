@@ -2,9 +2,20 @@ import { motion } from "framer-motion";
 import { profile } from "../../data";
 import SectionHeading from "../ui/SectionHeading";
 import Button from "../ui/Button";
-import { FaLinkedin, FaEnvelope, FaPhone, FaGlobe } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaGlobe, FaWhatsapp } from "react-icons/fa";
+
+const whatsappMessage = encodeURIComponent(
+  "Hello Jules, I found your portfolio and I'd like to connect."
+);
 
 const contactMethods = [
+  {
+    icon: FaWhatsapp,
+    label: "WhatsApp",
+    value: profile.phone,
+    href: `${profile.links.whatsapp}?text=${whatsappMessage}`,
+    accent: "text-[#25D366]",
+  },
   {
     icon: FaEnvelope,
     label: "Email",
@@ -16,6 +27,12 @@ const contactMethods = [
     label: "Phone",
     value: profile.phone,
     href: `tel:${profile.phone.replace(/\s/g, "")}`,
+  },
+  {
+    icon: FaGithub,
+    label: "GitHub",
+    value: "Juleshb",
+    href: profile.links.github,
   },
   {
     icon: FaLinkedin,
@@ -52,7 +69,7 @@ export default function Contact() {
         </p>
 
         <div className="grid sm:grid-cols-2 gap-4 mb-10">
-          {contactMethods.map(({ icon: Icon, label, value, href }) => (
+          {contactMethods.map(({ icon: Icon, label, value, href, accent }) => (
             <a
               key={label}
               href={href}
@@ -60,7 +77,7 @@ export default function Contact() {
               rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
               className="flex items-center gap-4 p-4 rounded-xl border border-border bg-surface-800/50 hover:border-accent/40 hover:bg-surface-800 transition-all text-left group"
             >
-              <div className="p-3 rounded-lg bg-accent/10 text-accent group-hover:bg-accent/20 transition-colors">
+              <div className={`p-3 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors ${accent || "text-accent"}`}>
                 <Icon />
               </div>
               <div>
@@ -71,9 +88,17 @@ export default function Contact() {
           ))}
         </div>
 
-        <Button href={`mailto:${profile.email}?subject=Project Inquiry`}>
-          Send Me an Email
-        </Button>
+        <div className="flex flex-wrap justify-center gap-4">
+          <Button href={`${profile.links.whatsapp}?text=${whatsappMessage}`}>
+            WhatsApp Me
+          </Button>
+          <Button
+            variant="secondary"
+            href={`mailto:${profile.email}?subject=Project Inquiry`}
+          >
+            Send Email
+          </Button>
+        </div>
       </motion.div>
     </section>
   );

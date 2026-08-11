@@ -9,6 +9,7 @@ import {
   Footer,
 } from "./components";
 import GitNodesBackground from "./components/ui/GitNodesBackground";
+import WhatsAppHelp from "./components/ui/WhatsAppHelp";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppHelp />
     </div>
   );
 }

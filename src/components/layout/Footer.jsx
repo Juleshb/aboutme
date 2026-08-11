@@ -1,5 +1,5 @@
 import { profile } from "../../data";
-import { FaLinkedin, FaGlobe, FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaGlobe, FaEnvelope, FaPhone } from "react-icons/fa";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -41,6 +41,15 @@ export default function Footer() {
           <div>
             <p className="font-mono text-sm text-text-muted mb-4">// links</p>
             <div className="flex gap-4">
+              <a
+                href={profile.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-text-secondary hover:text-accent text-xl transition-colors"
+                aria-label="GitHub"
+              >
+                <FaGithub />
+              </a>
               <a
                 href={profile.links.linkedin}
                 target="_blank"

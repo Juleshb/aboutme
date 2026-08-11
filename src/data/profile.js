@@ -10,8 +10,10 @@ export const profile = {
   phone: "+250 789 028 283",
   links: {
     linkedin: "https://www.linkedin.com/in/habarurema-jules-a95725406",
+    github: "https://github.com/Juleshb",
     portfolio: "https://jules-hb-250.netlify.app",
     company: "https://www.hblab.rw",
+    whatsapp: "https://wa.me/250789028283",
   },
   about: [
     "Senior Software Engineer with 5+ years of experience building scalable full-stack applications. I lead teams, architect systems, and ship products that improve operational efficiency and user experience.",

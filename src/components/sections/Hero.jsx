@@ -37,7 +37,10 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <Button href={profile.links.linkedin}>View LinkedIn</Button>
+            <Button href={profile.links.github}>View GitHub</Button>
+            <Button variant="secondary" href={profile.links.linkedin}>
+              LinkedIn
+            </Button>
             <Button
               variant="secondary"
               href={`mailto:${profile.email}?subject=Let's work together`}

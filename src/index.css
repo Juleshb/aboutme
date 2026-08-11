@@ -159,6 +159,55 @@
     font-size: 0.9375rem;
   }
 
+  .whatsapp-help-btn {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .whatsapp-help:hover .whatsapp-help-btn {
+    transform: scale(1.06);
+    box-shadow:
+      0 12px 40px color-mix(in srgb, #25d366 25%, transparent),
+      inset 0 1px 0 var(--color-glass-shine);
+  }
+
+  .whatsapp-help-tooltip {
+    position: absolute;
+    right: calc(100% + 0.75rem);
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem 0.875rem;
+    border-radius: 9999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    color: var(--color-text-primary);
+    background: var(--color-glass-bg);
+    border: 1px solid var(--color-glass-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .whatsapp-help:hover .whatsapp-help-tooltip {
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .whatsapp-help {
+      bottom: 1.25rem;
+      right: 1.25rem;
+    }
+
+    .whatsapp-help-tooltip {
+      display: none;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .git-nodes-bg {
       display: none;
