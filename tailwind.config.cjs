@@ -1,36 +1,49 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
     fontFamily: {
-      Poppins: "Poppins"
+      sans: ["Inter", "system-ui", "sans-serif"],
+      mono: ["JetBrains Mono", "monospace"],
     },
     extend: {
       colors: {
-        Teal: "#2F6C6D",
-        HummingBird: "#d1f1ee",
-        yellow: "#e4d63b",
-        Solitude: "#e9e9ea",
-        gray: "#4B4B4C"
+        surface: {
+          900: "var(--color-surface-900)",
+          800: "var(--color-surface-800)",
+          700: "var(--color-surface-700)",
+          600: "var(--color-surface-600)",
+        },
+        accent: {
+          DEFAULT: "var(--color-accent)",
+          dim: "var(--color-accent-dim)",
+        },
+        text: {
+          primary: "var(--color-text-primary)",
+          secondary: "var(--color-text-secondary)",
+          muted: "var(--color-text-muted)",
+        },
+        border: "var(--color-border)",
+        onAccent: "var(--color-on-accent)",
+        success: "var(--color-success)",
       },
       animation: {
-        slide: "slide 25s linear infinite"
+        blink: "blink 1s step-end infinite",
       },
       keyframes: {
-        slide: {
-          "0%,100%" : {transform: "translateX(5%)"},
-          "50%": {transform: "translateX(-120%)"}
-        }
-      }
+        blink: {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0 },
+        },
+      },
     },
     screens: {
       xs: "480px",
       sm: "768px",
       md: "1060px",
+      lg: "1280px",
     },
   },
   plugins: [],
-}
+};

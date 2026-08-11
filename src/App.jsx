@@ -1,22 +1,29 @@
 import {
   Navbar,
-  Home,
+  Hero,
   About,
-  Teacher,
+  Experience,
+  Projects,
+  Skills,
   Contact,
-  Courses,
   Footer,
-} from "./components/index";
+} from "./components";
+import GitNodesBackground from "./components/ui/GitNodesBackground";
 
 function App() {
   return (
-    <div className="font-Poppins bg-Solitude">
+    <div className="bg-surface-900 text-text-primary min-h-screen relative transition-colors duration-300">
+      <GitNodesBackground />
+      <div className="fixed inset-0 bg-grid opacity-30 pointer-events-none z-[2]" />
       <Navbar />
-      <Home />
-      <About />
-      <Courses />
-      <Teacher />
-      <Contact />
+      <main className="relative z-10">
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );

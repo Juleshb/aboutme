@@ -1,18 +1,167 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  img {
-    @apply w-full
+  :root {
+    --color-surface-900: #f8fafc;
+    --color-surface-800: #ffffff;
+    --color-surface-700: #f1f5f9;
+    --color-surface-600: #e2e8f0;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #475569;
+    --color-text-muted: #94a3b8;
+    --color-border: #e2e8f0;
+    --color-accent: #0d9488;
+    --color-accent-dim: #0f766e;
+    --color-on-accent: #ffffff;
+    --color-success: #16a34a;
+    --grid-color: rgba(13, 148, 136, 0.06);
+    --color-node: color-mix(in srgb, var(--color-accent) 65%, transparent);
+    --color-node-line: color-mix(in srgb, var(--color-accent) 22%, transparent);
+    --color-glass-bg: color-mix(in srgb, var(--color-surface-800) 75%, transparent);
+    --color-glass-border: color-mix(in srgb, var(--color-accent) 20%, var(--color-border));
+    --color-glass-shine: color-mix(in srgb, white 50%, transparent);
   }
 
-  .section {
-    @apply container mx-auto py-24 px-6 
+  .dark {
+    --color-surface-900: #0a0e14;
+    --color-surface-800: #111820;
+    --color-surface-700: #1a2332;
+    --color-surface-600: #243044;
+    --color-text-primary: #e6edf3;
+    --color-text-secondary: #8b949e;
+    --color-text-muted: #6e7681;
+    --color-border: #21262d;
+    --color-accent: #56d4a8;
+    --color-accent-dim: #3db892;
+    --color-on-accent: #0a0e14;
+    --color-success: #4ade80;
+    --grid-color: rgba(86, 212, 168, 0.03);
+    --color-node: color-mix(in srgb, var(--color-accent) 70%, transparent);
+    --color-node-line: color-mix(in srgb, var(--color-accent) 18%, transparent);
+    --color-glass-bg: color-mix(in srgb, var(--color-surface-800) 55%, transparent);
+    --color-glass-border: color-mix(in srgb, var(--color-accent) 22%, var(--color-border));
+    --color-glass-shine: color-mix(in srgb, white 8%, transparent);
   }
-  .animate-slide:hover {
-    animation-play-state: paused;
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-surface-900 text-text-primary transition-colors duration-300;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+    color: var(--color-text-primary);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--color-surface-900);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-surface-600);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in srgb, var(--color-accent) 50%, transparent);
+  }
+}
+
+@layer components {
+  .section {
+    @apply container mx-auto px-6 py-24 relative;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .glass-nav {
+    border-radius: 9999px;
+    background: var(--color-glass-bg);
+    border: 1px solid var(--color-glass-border);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow:
+      0 8px 32px color-mix(in srgb, var(--color-accent) 10%, transparent),
+      inset 0 1px 0 var(--color-glass-shine);
+  }
+
+  .glass-nav-scrolled {
+    box-shadow:
+      0 12px 40px color-mix(in srgb, var(--color-accent) 14%, transparent),
+      inset 0 1px 0 var(--color-glass-shine);
+  }
+
+  .glass-nav-menu {
+    border-radius: 1.5rem;
+  }
+
+  .glass-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-glass-border);
+    background: color-mix(in srgb, var(--color-surface-700) 50%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.2s ease;
+  }
+
+  .glass-icon-btn:hover {
+    color: var(--color-accent);
+    border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.5rem 0.875rem;
+    border-radius: 9999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  }
+
+  .nav-link-active {
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 15%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-accent) 25%, transparent);
+  }
+
+  .glass-nav-menu .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .git-nodes-bg {
+      display: none;
+    }
   }
 }
